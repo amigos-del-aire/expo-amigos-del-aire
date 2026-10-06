@@ -14,6 +14,9 @@
             /* Fondo degradado suave de 3 colores pastel llamativos pero amables con la vista */
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2e1065 100%);
             background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         /* Custom Marquee Animation */
         @keyframes marquee {
@@ -32,7 +35,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200"
      crossorigin="anonymous"></script>
 </head>
-<body class="text-slate-800 min-h-screen flex flex-col justify-between selection:bg-sky-400 selection:text-slate-900">
+<body class="text-slate-800 selection:bg-sky-400 selection:text-slate-900">
 
     <header class="bg-white/80 backdrop-blur-md border-b border-sky-100 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -60,7 +63,7 @@
                             <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
                                 <img src="https://placehold.co/60x40/075985/ffffff?text=Foto3" alt="Anuncio 3" class="w-full h-full object-cover">
                             </div>
-                            <span>🎟️️ Promociones exclusivas con nuestros expositores oficiales.</span>
+                            <span>🎟 Promociones exclusivas con nuestros expositores oficiales.</span>
                         </div>
                         <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
                             <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
@@ -254,7 +257,7 @@
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
-          <!-- Card 8 -->
+                <!-- Card 8 -->
                 <div class="bg-white/80 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-sky-300 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
@@ -319,7 +322,13 @@
             </div>
         </section>
 
-        <!-- Contador de visitas oficial integrado -->
+        <!-- 
+          ==================================================
+          AQUÍ ESTÁ EL CONTADOR DE VISITAS OFICIAL:
+          Si en el futuro quieres cambiarlo o modificarlo, 
+          lo encuentras dentro de esta sección (<section>).
+          ==================================================
+        -->
         <section class="max-w-7xl mx-auto px-4 pb-12 text-center">
             <div class="inline-block bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-xl shadow-inner">
                 <div id="sfcp3snjf6zmtxh181n7rf16xt6kr3kfzgs"></div><script type="text/javascript" src="https://counter6.optistats.ovh/private/counter.js?c=p3snjf6zmtxh181n7rf16xt6kr3kfzgs&down=async" async></script><br><a href="https://www.contadorvisitasgratis.com" style="font-size: 10px; color: #94a3b8; text-decoration: none;">http contador de visitas com</a><noscript><a href="https://www.contadorvisitasgratis.com" title="http contador de visitas com"><img src="https://counter6.optistats.ovh/private/contadorvisitasgratis.php?c=p3snjf6zmtxh181n7rf16xt6kr3kfzgs" border="0" title="http contador de visitas com" alt="http contador de visitas com"></a></noscript>
@@ -327,7 +336,8 @@
         </section>
     </main>
 
-    <footer class="bg-white/80 backdrop-blur-md border-t border-sky-100 py-6 text-center text-xs text-slate-500 shadow-sm">
+    <!-- Footer fijo hasta abajo gracias a flexbox en el body -->
+    <footer class="bg-white/80 backdrop-blur-md border-t border-sky-100 py-6 text-center text-xs text-slate-500 shadow-sm mt-auto">
         <p>© 2026 Amigos del Aire 6. Todos los derechos reservados.</p>
     </footer>
 
