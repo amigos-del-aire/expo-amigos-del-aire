@@ -123,7 +123,18 @@
     </header>
 
     <main class="flex-grow">
-        <section class="max-w-7xl mx-auto px-4 py-12 text-center">
+        <!-- BANNER / CABECERA PRINCIPAL -->
+        <section class="max-w-7xl mx-auto px-4 pt-8">
+            <div class="w-full h-48 md:h-72 lg:h-80 rounded-3xl overflow-hidden shadow-2xl border border-white/20 relative group">
+                <!-- Cambia "banner.jpeg" por el nombre de tu imagen de cabecera -->
+                <img src="banner.jpeg" alt="Banner Amigos del Aire" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                    <p class="text-white text-sm md:text-base font-semibold drop-shadow-md">Bienvenido a la sexta edición de Amigos del Aire</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 py-8 text-center">
             <!-- Event Logo Space con logo.jpeg -->
             <div class="mb-6 flex justify-center">
                 <div class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-tr from-amber-500 to-orange-600 rounded-3xl p-1 shadow-lg shadow-amber-950/50 flex items-center justify-center border border-white/60 transform hover:scale-105 transition-all duration-300">
