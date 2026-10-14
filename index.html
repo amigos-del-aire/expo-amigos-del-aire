@@ -44,94 +44,114 @@
 </head>
 <body class="selection:bg-amber-400 selection:text-slate-900">
 
-    <!-- Header Flotante Minimalista -->
-    <header class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <!-- Top Left Marquee Container (Sin fondo blanco sólido) -->
-            <div class="flex items-center space-x-4 overflow-hidden w-full lg:w-3/4">
-                <span class="bg-amber-600/90 text-white text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 shadow-sm backdrop-blur-sm">
+    <!-- Header Flotante Minimalista - Sin "cintilla" continua -->
+    <header class="fixed top-0 w-full z-50 pt-4 pointer-events-none">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+            
+            <!-- Top Left Marquee Container -->
+            <div class="flex items-center space-x-4 overflow-hidden w-full lg:w-3/4 pointer-events-auto">
+                
+                <!-- Etiqueta de Anuncios -->
+                <span class="bg-amber-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shrink-0 flex items-center gap-1.5 shadow-lg shadow-amber-900/20 backdrop-blur-md border border-amber-400/30">
                     <svg class="w-3.5 h-3.5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Anuncios
                 </span>
-                <div class="overflow-hidden relative w-full whitespace-nowrap">
-                    <div class="animate-marquee flex space-x-8 text-sm text-slate-200 font-medium">
-                        <!-- Items de marquesina flotantes -->
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover opacity-90">
+
+                <!-- Marquesina con cápsulas separadas -->
+                <div class="overflow-hidden relative w-full whitespace-nowrap py-2">
+                    <div class="animate-marquee flex space-x-4 text-sm text-slate-100 font-medium">
+                        
+                        <!-- Cápsula 1 -->
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover">
                             </div>
-                            <span>¡Bienvenidos!</span>
+                            <span class="text-xs tracking-wide">¡Bienvenidos!</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover opacity-90">
+
+                        <!-- Cápsula 2 -->
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover">
                             </div>
-                            <span>🏆Renta de estructuras para danza aerea.</span>
+                            <span class="text-xs tracking-wide">🏆 Renta de estructuras para danza aerea.</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover opacity-90">
+
+                        <!-- Cápsula 3 -->
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover">
                             </div>
-                            <span>App de danza aera.</span>
+                            <span class="text-xs tracking-wide">App de danza aera.</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover opacity-90">
+
+                        <!-- Cápsula 4 -->
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
                             </div>
-                            <span>Equipo de danza aerea y escalada.</span>
+                            <span class="text-xs tracking-wide">Equipo de danza aerea y escalada.</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover opacity-90">
+
+                        <!-- Cápsula 5 -->
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover">
                             </div>
-                            <span>Competencias de danza aerea.</span>
+                            <span class="text-xs tracking-wide">Competencias de danza aerea.</span>
                         </div>
-                        <!-- Duplicado para efecto fluido infinito -->
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover opacity-90">
+
+                        <!-- Duplicados para efecto fluido infinito -->
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover">
                             </div>
-                            <span>¡Bienvenidos!</span>
+                            <span class="text-xs tracking-wide">¡Bienvenidos!</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover opacity-90">
+
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover">
                             </div>
-                            <span>🏆Renta de estructuras para danza aerea.</span>
+                            <span class="text-xs tracking-wide">🏆 Renta de estructuras para danza aerea.</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover opacity-90">
+
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover">
                             </div>
-                            <span>App de danza aerea.</span>
+                            <span class="text-xs tracking-wide">App de danza aerea.</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover opacity-90">
+
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
                             </div>
-                            <span>Equipo de danza aerea y escalada.</span>
+                            <span class="text-xs tracking-wide">Equipo de danza aerea y escalada.</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
-                                <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover opacity-90">
+
+                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
+                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover">
                             </div>
-                            <span>Competencias de danza aerea.</span>
+                            <span class="text-xs tracking-wide">Competencias de danza aerea.</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Quick brand info right -->
-            <div class="hidden lg:flex items-center space-x-3 text-right">
+            
+            <!-- Quick brand info right (Cápsula independiente) -->
+            <div class="hidden lg:flex items-center space-x-3 text-right bg-white/5 backdrop-blur-md border border-white/10 rounded-full pl-4 pr-1 py-1 shadow-lg pointer-events-auto">
                 <span class="text-xs text-slate-300 font-medium">stands 2026</span>
-                <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20 shadow-sm flex items-center justify-center">
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20 shadow-sm flex items-center justify-center bg-black/20">
                     <img src="logo.jpeg" alt="Logo" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Añadir margen superior para compensar el header fixed -->
-    <main class="flex-grow pt-24">
+    <!-- Añadir margen superior para compensar el header fixed flotante -->
+    <main class="flex-grow pt-28">
         
         <section class="max-w-7xl mx-auto px-4 py-8 text-center">
             <!-- Event Logo Space minimalista -->
@@ -154,10 +174,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- Card 1 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="levitate.jpeg" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #01</span>
@@ -169,17 +189,17 @@
                             <p class="text-xs text-slate-200 font-medium">20% in merch oficial  y 20% en inscripcion registrandose y pagando en el evento de amigos del aire.</p>
                         </div>
                     </div>
-                    <a href="https://www.levitate.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://www.levitate.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="ChatGPT Image 24 may 2026, 07_33_28.png" alt="Logo SkyGear" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #02</span>
@@ -191,17 +211,17 @@
                             <p class="text-xs text-slate-200 font-medium">Breas de 60 ml $120 o brea de 40 ml $100 promiocion Una brea de 60 ml y la otra de 40ml en $200.</p>
                         </div>
                     </div>
-                    <a href="https://charly336.github.io/BLACKMOON-WEB/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://charly336.github.io/BLACKMOON-WEB/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="vIOLETA.jpeg" alt="Logo Club Amigos" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #03</span>
@@ -213,17 +233,17 @@
                             <p class="text-xs text-slate-200 font-medium">En la compra de un mínimo de 300 pesos 50 pesos de descuento</p>
                         </div>
                     </div>
-                    <a href="https://www.instagram.com/v.desi_gns?stkn=enFiODV1dGwya3A0" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://www.instagram.com/v.desi_gns?stkn=enFiODV1dGwya3A0" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="feros.jpeg" alt="Logo Aviación VIP" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #04</span>
@@ -235,17 +255,17 @@
                             <p class="text-xs text-slate-200 font-medium">cintas: eslingas, straps y arneses con el 15% de descuento y meses sin intereses</p>
                         </div>
                     </div>
-                    <a href="https://www.feros.com.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://www.feros.com.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
 
                 <!-- Card 5 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="corasa.jpeg" alt="Logo Aviación VIP" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #05</span>
@@ -257,17 +277,17 @@
                             <p class="text-xs text-slate-200 font-medium">🎪 PROMOS EVENTO $20<br>* Brochetas mágicas (¡con premio sorpresa!)<br>* Bocadillos divertidos con mensaje<br>¡Disfruta y no pagues!</p>
                         </div>
                     </div>
-                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
                 
                 <!-- Card 6 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="sinergia.jpeg" alt="Logo Club Amigos" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #06</span>
@@ -279,17 +299,17 @@
                             <p class="text-xs text-slate-200 font-medium">Aparta tu fecha el dia del encuentro e incluiremos efectos especiales, pueden ser burbujas, humo, chisperos, proyector o bazucas.</p>
                         </div>
                     </div>
-                    <a href="https://www.facebook.com/share/r/18UdfozD4s/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://www.facebook.com/share/r/18UdfozD4s/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
                 
                 <!-- Card 7 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="marian 2.jpeg" alt="Logo FlyAcademy" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #07</span>
@@ -301,17 +321,17 @@
                             <p class="text-xs text-slate-200 font-medium">Si nos contratas el día del evento Amigos Del Aire 6 para tu evento te regalamos un Chees Cake a elegir</p>
                         </div>
                     </div>
-                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div> 
                 
                 <!-- Card 8 -->
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1 shadow-inner">
                                 <img src="circo urbano.jpeg" alt="Logo SkyPark" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #08</span>
@@ -323,7 +343,7 @@
                             <p class="text-xs text-slate-200 font-medium">En la compra de dos cafés se regala una galleta</p>
                         </div>
                     </div>
-                    <a href="https://instagram.com/miurbanocirco?cplk=cXl0emQ4MGtnZTB5" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
+                    <a href="https://instagram.com/miurbanocirco?cplk=cXl0emQ4MGtnZTB5" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
@@ -331,7 +351,7 @@
             </div>
         </section>
 
-        <!-- AQUI PUEDES MODIFICAR: Sección del Chat de Comentarios -->
+        <!-- Sección del Chat de Comentarios -->
         <section class="max-w-4xl mx-auto px-4 pb-20">
             <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
                 
@@ -390,7 +410,6 @@
                 </div>
             </div>
         </section>
-        <!-- FIN MODIFICACIÓN CHAT -->
 
         <!-- Bloque de anuncios comercial hasta abajo del contenido principal -->
         <section class="max-w-7xl mx-auto px-4 pb-8 text-center">
