@@ -363,8 +363,24 @@
                     </h2>
                 </div>
 
+                <!-- Recuadro Informativo de Reglas en Pantalla -->
+                <div class="mx-8 mt-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-200/90 flex items-start gap-3">
+                    <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <div>
+                        <span class="font-bold text-amber-300 block mb-0.5">Reglas de la comunidad:</span>
+                        Mantengamos un espacio respetuoso para la comunidad de Amigos del Aire. No se admiten comentarios con lenguaje ofensivo o palabras altisonantes.
+                    </div>
+                </div>
+
                 <!-- Formulario -->
                 <div class="p-8 border-b border-white/10 bg-black/10">
+                    
+                    <!-- Alerta de Violación de Reglas (Oculta por defecto) -->
+                    <div id="bad-words-alert" class="hidden mb-4 p-3.5 bg-red-500/20 border border-red-500/50 rounded-xl text-red-200 text-xs font-semibold flex items-center gap-2 animate-bounce">
+                        <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Se detectaron malas palabras, favor de cambiar su comentario</span>
+                    </div>
+
                     <form id="comment-form" class="space-y-4">
                         <div>
                             <input 
@@ -448,7 +464,7 @@
         <p>© 2026 Amigos del Aire 6. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script del Chat Local -->
+    <!-- Script del Chat Local con filtro de palabras prohibidas -->
     <script>
         const STORAGE_KEY = 'chat_amigos_aire';
         const form = document.getElementById('comment-form');
@@ -457,6 +473,14 @@
         const commentsList = document.getElementById('comments-list');
         const emptyState = document.getElementById('empty-state');
         const commentCount = document.getElementById('comment-count');
+        const badWordsAlert = document.getElementById('bad-words-alert');
+
+        // Expresión regular que detecta: wey, pinche, verga, pendejo/a/da, chinga/chingada/chingar/chingadera y chtm (incluyendo variaciones)
+        const BAD_WORDS_REGEX = /(w[e3]y|gu[e3]y|p[i1]nch[e3]s?|v[e3]rga[s]?|p[e3]nd[e3]j[oas\d]*|ch[i1]ng[a-z]*|chtm)/i;
+
+        function containsBadWords(text) {
+            return BAD_WORDS_REGEX.test(text);
+        }
 
         function escapeHTML(str) {
             const div = document.createElement('div');
@@ -512,11 +536,25 @@
             `).join('');
         }
 
+        // Limpiar la alerta de malas palabras al empezar a escribir
+        nameInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
+        commentInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = nameInput.value.trim();
             const text = commentInput.value.trim();
             if (!name || !text) return;
+
+            // Validación de malas palabras
+            if (containsBadWords(name) || containsBadWords(text)) {
+                badWordsAlert.classList.remove('hidden');
+                badWordsAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return; // Bloquea la publicación
+            }
+
+            // Oculta la alerta si pasa la validación
+            badWordsAlert.classList.add('hidden');
 
             const newComment = { id: Date.now(), name: name, text: text, date: new Date().toISOString() };
             const existingComments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
