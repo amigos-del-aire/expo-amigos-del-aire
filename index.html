@@ -18,8 +18,9 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            color: #f8fafc; /* Color de texto base claro para fondo oscuro */
         }
-        /* Custom Marquee Animation - Duración aumentada a 50s para mayor lentitud */
+        /* Custom Marquee Animation */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -32,328 +33,369 @@
         .animate-marquee:hover {
             animation-play-state: paused;
         }
+        /* Ajustes de scrollbar para el chat */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200"
      crossorigin="anonymous"></script>
 </head>
-<body class="text-slate-800 selection:bg-amber-400 selection:text-slate-900">
+<body class="selection:bg-amber-400 selection:text-slate-900">
 
-    <header class="bg-white/80 backdrop-blur-md border-b border-amber-100 sticky top-0 z-50 shadow-sm">
+    <!-- Header Flotante Minimalista -->
+    <header class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <!-- Top Left Marquee Container -->
-            <div class="flex items-center space-x-4 overflow-hidden w-full lg:w-3/4 bg-white/60 rounded-xl p-2 border border-amber-100 shadow-sm">
-                <span class="bg-amber-600 text-white text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 shadow-sm">
+            <!-- Top Left Marquee Container (Sin fondo blanco sólido) -->
+            <div class="flex items-center space-x-4 overflow-hidden w-full lg:w-3/4">
+                <span class="bg-amber-600/90 text-white text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 shadow-sm backdrop-blur-sm">
                     <svg class="w-3.5 h-3.5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Anuncios
                 </span>
                 <div class="overflow-hidden relative w-full whitespace-nowrap">
-                    <div class="animate-marquee flex space-x-6 text-sm text-slate-700">
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover">
+                    <div class="animate-marquee flex space-x-8 text-sm text-slate-200 font-medium">
+                        <!-- Items de marquesina flotantes -->
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover opacity-90">
                             </div>
-                            <span> ¡Bienvenidos!</span>
+                            <span>¡Bienvenidos!</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="sinergia.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover opacity-90">
                             </div>
                             <span>🏆Renta de estructuras para danza aerea.</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="app.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover opacity-90">
                             </div>
-                            <span>App de danza  aera.</span>
+                            <span>App de danza aera.</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover opacity-90">
                             </div>
                             <span>Equipo de danza aerea y escalada.</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="levitate.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover opacity-90">
                             </div>
                             <span>Competencias de danza aerea.</span>
                         </div>
                         <!-- Duplicado para efecto fluido infinito -->
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover opacity-90">
                             </div>
-                            <span> ¡Bienvenidos!</span>
+                            <span>¡Bienvenidos!</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="sinergia.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover opacity-90">
                             </div>
                             <span>🏆Renta de estructuras para danza aerea.</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="app.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover opacity-90">
                             </div>
                             <span>App de danza aerea.</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover opacity-90">
                             </div>
                             <span>Equipo de danza aerea y escalada.</span>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/90 px-3 py-1 rounded-lg shadow-sm border border-slate-100">
-                            <div class="w-12 h-8 shrink-0 overflow-hidden rounded shadow-sm bg-slate-100 flex items-center justify-center">
-                                <img src="levitate.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-6 shrink-0 overflow-hidden rounded bg-white/10 flex items-center justify-center">
+                                <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover opacity-90">
                             </div>
                             <span>Competencias de danza aerea.</span>
                         </div>
                     </div>
                 </div>
             </div>
-           <!-- Quick brand info right -->
+            <!-- Quick brand info right -->
             <div class="hidden lg:flex items-center space-x-3 text-right">
-                <span class="text-xs text-slate-600 font-medium">stands 2026</span>
-                <div class="w-8 h-8 rounded-full overflow-hidden border border-amber-200 shadow-sm bg-amber-50 flex items-center justify-center">
+                <span class="text-xs text-slate-300 font-medium">stands 2026</span>
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20 shadow-sm flex items-center justify-center">
                     <img src="logo.jpeg" alt="Logo" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <section class="max-w-7xl mx-auto px-4 py-12 text-center">
-            <!-- Event Logo Space con logo.jpeg -->
-            <div class="mb-6 flex justify-center">
-                <div class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-tr from-amber-500 to-orange-600 rounded-3xl p-1 shadow-lg shadow-amber-950/50 flex items-center justify-center border border-white/60 transform hover:scale-105 transition-all duration-300">
-                    <div class="w-full h-full bg-white rounded-[22px] flex flex-col items-center justify-center p-3 overflow-hidden shadow-inner">
-                        <img src="logo.jpeg" alt="Logo Oficial Amigos del Aire" class="w-full h-full object-contain">
-                    </div>
+    <!-- Añadir margen superior para compensar el header fixed -->
+    <main class="flex-grow pt-24">
+        
+        <section class="max-w-7xl mx-auto px-4 py-8 text-center">
+            <!-- Event Logo Space minimalista -->
+            <div class="mb-8 flex justify-center">
+                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 shadow-2xl flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-sm transform hover:scale-105 transition-all duration-500 overflow-hidden">
+                    <img src="logo.jpeg" alt="Logo Oficial Amigos del Aire" class="w-full h-full object-cover rounded-full mix-blend-screen">
                 </div>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-amber-400 mb-3">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500 mb-4">
                 Expositores de Amigos del Aire 6
             </h1>
-            <p class="max-w-2xl mx-auto text-amber-100/80 text-base md:text-lg mb-10 font-medium">
+            <p class="max-w-2xl mx-auto text-slate-300 text-base md:text-lg mb-10 font-medium">
                 Descubre las propuestas que nuestros expositores tienen para ti y Explora sus promociones exclusivas para amigos del aire.
             </p>
         </section>
 
-        <section class="max-w-7xl mx-auto px-4 pb-20">
+        <!-- Grid de Expositores (Tarjetas Minimalistas) -->
+        <section class="max-w-7xl mx-auto px-4 pb-16">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- Card 1 -->
-                <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
-                                <img src="levitate.jpeg" class="w-full h-full object-contain">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
+                                <img src="levitate.jpeg" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #01</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #01</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Levitate</h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Competencia de Danza aerea a nivel nacional.</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium">20% in merch oficial  y 20% en inscripcion registrandose y pagando en el evento de amigos del aire.</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Levitate</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Competencia de Danza aerea a nivel nacional.</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">20% in merch oficial  y 20% en inscripcion registrandose y pagando en el evento de amigos del aire.</p>
                         </div>
                     </div>
-                    <a href="https://www.levitate.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://www.levitate.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
                                 <img src="ChatGPT Image 24 may 2026, 07_33_28.png" alt="Logo SkyGear" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #02</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #02</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Productos blackmoon</h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Productos blackmoon somos parte del grupo digital de danza aerea mas grande de latinamerica.</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium">Breas de 60 ml $120 o brea de 40 ml $100 promiocion Una brea de 60 ml y la otra de 40ml en $200.</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Productos blackmoon</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Productos blackmoon somos parte del grupo digital de danza aerea mas grande de latinamerica.</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">Breas de 60 ml $120 o brea de 40 ml $100 promiocion Una brea de 60 ml y la otra de 40ml en $200.</p>
                         </div>
                     </div>
-                    <a href="https://charly336.github.io/BLACKMOON-WEB/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://charly336.github.io/BLACKMOON-WEB/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
+
                 <!-- Card 3 -->
-                <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
                                 <img src="vIOLETA.jpeg" alt="Logo Club Amigos" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #03</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #03</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Violeta </h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Venta de vinchas y accesorios de circo.</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium">En la compra de un mínimo de 300 pesos 50 pesos de descuento</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Violeta</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Venta de vinchas y accesorios de circo.</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">En la compra de un mínimo de 300 pesos 50 pesos de descuento</p>
                         </div>
                     </div>
-                    <a href="https://www.instagram.com/v.desi_gns?stkn=enFiODV1dGwya3A0" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://www.instagram.com/v.desi_gns?stkn=enFiODV1dGwya3A0" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
+
                 <!-- Card 4 -->
-                <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
                                 <img src="feros.jpeg" alt="Logo Aviación VIP" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #04</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #04</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Feroz arneses</h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Arneses cintas y mas....</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium"> cintas: eslingas, straps y arneses con el 15% de descuento y meses sin intereses</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Feroz arneses</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Arneses cintas y mas....</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">cintas: eslingas, straps y arneses con el 15% de descuento y meses sin intereses</p>
                         </div>
                     </div>
-                    <a href="https://www.feros.com.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://www.feros.com.mx" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
-          <!-- Card  5 -->
-                <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+
+                <!-- Card 5 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
                                 <img src="corasa.jpeg" alt="Logo Aviación VIP" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #05</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #05</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Coraza</h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Tan rico como en casa</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium">🎪 PROMOS EVENTO $20
-                           * Brochetas mágicas (¡con premio sorpresa!)
-                           * Bocadillos divertidos con mensaje
-                           ¡Disfruta y no pagues!</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Coraza</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Tan rico como en casa</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">🎪 PROMOS EVENTO $20<br>* Brochetas mágicas (¡con premio sorpresa!)<br>* Bocadillos divertidos con mensaje<br>¡Disfruta y no pagues!</p>
                         </div>
                     </div>
-                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
                 
                 <!-- Card 6 -->
-                <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
                                 <img src="sinergia.jpeg" alt="Logo Club Amigos" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #06</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #06</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Sinergia Danza aerea </h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Renta de estructura de danza aerea para eventos.</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium">Aparta tu fecha el dia del encuentro  e incluiremos efectos especiales , pueden ser burbujas ,humo, chisperos, proyector o bazucas (petalos ,metalicos , o papel)</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Sinergia Danza aerea</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Renta de estructura de danza aerea para eventos.</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">Aparta tu fecha el dia del encuentro e incluiremos efectos especiales, pueden ser burbujas, humo, chisperos, proyector o bazucas.</p>
                         </div>
                     </div>
-                    <a href="https://www.facebook.com/share/r/18UdfozD4s/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://www.facebook.com/share/r/18UdfozD4s/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
-               
+                
                 <!-- Card 7 -->
-                <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
                                 <img src="marian 2.jpeg" alt="Logo FlyAcademy" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #07</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #07</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Marian</h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Postres y mas..</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium">Si nos contratas el día del evento Amigos Del  Aire 6 para tu evento te regalamos un Chees Cake a elegir</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Marian</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Postres y mas..</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">Si nos contratas el día del evento Amigos Del Aire 6 para tu evento te regalamos un Chees Cake a elegir</p>
                         </div>
                     </div>
-                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://www.facebook.com/share/19ntnDJvnU/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div> 
-                 <!-- Card 8 -->
                 
-              <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
+                <!-- Card 8 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden p-1">
                                 <img src="circo urbano.jpeg" alt="Logo SkyPark" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #08</span>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #08</span>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Bebidas frias y calientes </h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">sodas italianas, limonadas, capuchino, chamoyadas y mas </p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium"> En la compra de dos cafés se regala una galleta</p>
-                        </div>
-                    </div>
-                    <a href="https://instagram.com/miurbanocirco?cplk=cXl0emQ4MGtnZTB5" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
-                        <span>Visitar Sitio</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                </div> -->
-
-
-                <!-- Card 7 -->
-             <!--   <div class="bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl p-5 flex flex-col justify-between shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden shadow-inner p-1">
-                                <img src="star.jpeg" alt="Logo AeroNav" class="w-full h-full object-contain rounded-lg">
-                            </div>
-                            <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #08</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Star Glow</h3>
-                        <p class="text-xs text-slate-600 mt-1 mb-3">Gliter bar .</p>
-                        <div class="bg-amber-50/80 border border-amber-100 rounded-xl p-3 mb-4">
-                            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-700 font-medium">....</p>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Bebidas frias y calientes</h3>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">sodas italianas, limonadas, capuchino, chamoyadas y mas</p>
+                        <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
+                            <p class="text-xs text-slate-200 font-medium">En la compra de dos cafés se regala una galleta</p>
                         </div>
                     </div>
-                    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl text-center shadow-md shadow-amber-200 transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://instagram.com/miurbanocirco?cplk=cXl0emQ4MGtnZTB5" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm">
                         <span>Visitar Sitio</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
-
-               
-                
-                
-
             </div>
         </section>
 
+        <!-- AQUI PUEDES MODIFICAR: Sección del Chat de Comentarios -->
+        <section class="max-w-4xl mx-auto px-4 pb-20">
+            <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+                
+                <!-- Cabecera del Chat -->
+                <div class="px-8 py-5 border-b border-white/10 bg-black/20">
+                    <h2 class="text-xl font-bold flex items-center gap-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        Muro de Comentarios (<span id="comment-count">0</span>)
+                    </h2>
+                </div>
+
+                <!-- Formulario -->
+                <div class="p-8 border-b border-white/10 bg-black/10">
+                    <form id="comment-form" class="space-y-4">
+                        <div>
+                            <input 
+                                type="text" 
+                                id="author-name" 
+                                required 
+                                placeholder="Tu nombre o apodo"
+                                class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-2.5 transition-all outline-none"
+                            >
+                        </div>
+                        <div>
+                            <textarea 
+                                id="author-comment" 
+                                required 
+                                rows="3" 
+                                placeholder="¿Qué te parece el evento? Deja tu comentario..."
+                                class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-3 resize-y transition-all outline-none"
+                            ></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button 
+                                type="submit" 
+                                class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-xl transition-all active:scale-95 flex items-center gap-2"
+                            >
+                                <span>Publicar</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Lista de Comentarios -->
+                <div id="comments-list" class="divide-y divide-white/5 bg-black/10 max-h-96 overflow-y-auto">
+                    <!-- Los comentarios se insertan por JS -->
+                </div>
+                
+                <!-- Estado Vacío -->
+                <div id="empty-state" class="p-10 text-center hidden bg-black/10">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/5 mb-3 text-slate-400 border border-white/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    </div>
+                    <p class="text-slate-300">Sé el primero en dejar un comentario.</p>
+                </div>
+            </div>
+        </section>
+        <!-- FIN MODIFICACIÓN CHAT -->
+
         <!-- Bloque de anuncios comercial hasta abajo del contenido principal -->
         <section class="max-w-7xl mx-auto px-4 pb-8 text-center">
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-inner">
-                <p class="text-xs text-amber-200 mb-2 uppercase tracking-widest font-semibold">Anuncio</p>
+            <div class="bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl p-4">
+                <p class="text-xs text-amber-400 mb-2 uppercase tracking-widest font-semibold">Anuncio</p>
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200"
                      crossorigin="anonymous"></script>
                 <!-- Anuncio Responsive Web -->
@@ -369,9 +411,9 @@
             </div>
         </section>
 
-        <!-- Contador de visitas oficial (Limpio y centrado sin texto molesto) -->
+        <!-- Contador de visitas oficial -->
         <section class="max-w-7xl mx-auto px-4 pb-12 flex flex-col items-center justify-center text-center">
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-2xl shadow-lg flex items-center justify-center">
+            <div class="bg-black/20 backdrop-blur-md border border-white/10 px-6 py-3 rounded-2xl flex items-center justify-center">
                 <div id="sfcgn1pqcfbg6g5b8u8r6zqetugk7cdt2h6"></div>
                 <script type="text/javascript" src="https://counter6.optistats.ovh/private/counter.js?c=gn1pqcfbg6g5b8u8r6zqetugk7cdt2h6&down=async" async></script>
                 <noscript>
@@ -379,12 +421,94 @@
                 </noscript>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer fijo hasta abajo de la página -->
-    <footer class="bg-white/80 backdrop-blur-md border-t border-amber-100 py-6 text-center text-xs text-slate-500 shadow-sm mt-auto">
+    <!-- Footer -->
+    <footer class="bg-black/40 backdrop-blur-md border-t border-white/10 py-6 text-center text-xs text-slate-400 mt-auto">
         <p>© 2026 Amigos del Aire 6. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script del Chat Local -->
+    <script>
+        const STORAGE_KEY = 'chat_amigos_aire';
+        const form = document.getElementById('comment-form');
+        const nameInput = document.getElementById('author-name');
+        const commentInput = document.getElementById('author-comment');
+        const commentsList = document.getElementById('comments-list');
+        const emptyState = document.getElementById('empty-state');
+        const commentCount = document.getElementById('comment-count');
+
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        }
+
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) { hash = str.charCodeAt(i) + ((hash << 5) - hash); }
+            const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-pink-500', 'bg-indigo-500', 'bg-teal-500'];
+            return colors[Math.abs(hash) % colors.length];
+        }
+
+        function formatDate(dateString) {
+            const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            return new Date(dateString).toLocaleDateString('es-ES', options);
+        }
+
+        function renderComments() {
+            const savedComments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            commentCount.textContent = savedComments.length;
+
+            if (savedComments.length === 0) {
+                commentsList.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            
+            commentsList.innerHTML = savedComments.map(comment => `
+                <div class="p-6 hover:bg-white/5 transition-colors">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full ${stringToColor(comment.name)} text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                                ${escapeHTML(getInitials(comment.name))}
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-baseline justify-between mb-1 gap-2">
+                                <h4 class="text-sm font-bold text-amber-200 truncate">${escapeHTML(comment.name)}</h4>
+                                <span class="text-[10px] text-slate-400 whitespace-nowrap">${formatDate(comment.date)}</span>
+                            </div>
+                            <div class="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">${escapeHTML(comment.text)}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = nameInput.value.trim();
+            const text = commentInput.value.trim();
+            if (!name || !text) return;
+
+            const newComment = { id: Date.now(), name: name, text: text, date: new Date().toISOString() };
+            const existingComments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            existingComments.unshift(newComment);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(existingComments));
+
+            form.reset();
+            renderComments();
+        });
+
+        renderComments();
+    </script>
 </body>
 </html>
