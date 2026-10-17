@@ -323,7 +323,7 @@
             </div>
         </section>
 
-        <!-- Sección del Chat de Comentarios (Google Sheets Backend) -->
+        <!-- Sección del Chat de Comentarios con Reacciones (Google Sheets Backend) -->
         <section class="max-w-4xl mx-auto px-4 pb-20">
             <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
                 <div class="px-8 py-5 border-b border-white/10 bg-black/20">
@@ -381,9 +381,9 @@
         <p>© 2026 Amigos del Aire 6. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script de Integración con Google Sheets -->
+    <!-- Script de Integración con Google Sheets + Reacciones -->
     <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1NpmlAId9xcPhO-N1COh7pfmeAnl0RASlqCtKP8NB1pX4xFdgqNc5BdCkdWH59ulL/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwxuVw-eq_pztfdIt3L73FM2UIRD4qnhOUAMbikapUOrkpZLnJgh-pEmRJa2UWujtiT/exec';
 
         const form = document.getElementById('comment-form');
         const nameInput = document.getElementById('author-name');
@@ -445,10 +445,42 @@
                                 <span class="text-[10px] text-slate-400 whitespace-nowrap">${escapeHTML(c.fecha)}</span>
                             </div>
                             <div class="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">${escapeHTML(c.comentario)}</div>
+                            
+                            <!-- Botones de Reacciones -->
+                            <div class="flex items-center gap-3 mt-3">
+                                <button onclick="sendReaction('${c.id}', 'like', this)" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs text-slate-300 transition-all active:scale-95">
+                                    <span>👍</span>
+                                    <span class="count">${c.likes || 0}</span>
+                                </button>
+                                <button onclick="sendReaction('${c.id}', 'love', this)" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs text-slate-300 transition-all active:scale-95">
+                                    <span>❤️</span>
+                                    <span class="count">${c.loves || 0}</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             `).join('');
+        }
+
+        async function sendReaction(commentId, type, btnElement) {
+            const countSpan = btnElement.querySelector('.count');
+            let currentCount = parseInt(countSpan.textContent) || 0;
+            
+            // Actualización visual inmediata en la pantalla
+            countSpan.textContent = currentCount + 1;
+            btnElement.classList.add('border-amber-400/50', 'bg-amber-500/10');
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'react', id: commentId, type: type })
+                });
+            } catch (error) {
+                console.error("Error al enviar reacción:", error);
+            }
         }
 
         form.addEventListener('submit', async (e) => {
@@ -465,7 +497,7 @@
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nombre, comentario })
+                    body: JSON.stringify({ action: 'create', nombre, comentario })
                 });
 
                 form.reset();
