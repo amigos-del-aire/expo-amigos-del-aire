@@ -9,18 +9,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Supabase JS Client CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Fondo de Octubre: morado profundo, naranja calabaza y negro/carbón */
             background: linear-gradient(135deg, #2e1065 0%, #c2410c 50%, #0f172a 100%);
             background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            color: #f8fafc; /* Color de texto base claro para fondo oscuro */
+            color: #f8fafc;
         }
-        /* Custom Marquee Animation */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -33,103 +35,50 @@
         .animate-marquee:hover {
             animation-play-state: paused;
         }
-        /* Ajustes de scrollbar para el chat */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200" crossorigin="anonymous"></script>
 </head>
 <body class="selection:bg-amber-400 selection:text-slate-900">
 
-    <!-- Header Flotante Minimalista - Sin "cintilla" continua -->
+    <!-- Header Flotante Minimalista -->
     <header class="fixed top-0 w-full z-50 pt-4 pointer-events-none">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
-            
-            <!-- Top Left Marquee Container -->
             <div class="flex items-center space-x-4 overflow-hidden w-full lg:w-3/4 pointer-events-auto">
-                
-                <!-- Etiqueta de Anuncios -->
                 <span class="bg-amber-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shrink-0 flex items-center gap-1.5 shadow-lg shadow-amber-900/20 backdrop-blur-md border border-amber-400/30">
                     <svg class="w-3.5 h-3.5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Anuncios
                 </span>
 
-                <!-- Marquesina con cápsulas separadas -->
                 <div class="overflow-hidden relative w-full whitespace-nowrap py-2">
                     <div class="animate-marquee flex space-x-4 text-sm text-slate-100 font-medium">
-                        
-                        <!-- Cápsula 1 -->
                         <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
                             <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
                                 <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover">
                             </div>
                             <span class="text-xs tracking-wide">¡Bienvenidos!</span>
                         </div>
-
-                        <!-- Cápsula 2 -->
                         <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
                             <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
                                 <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover">
                             </div>
                             <span class="text-xs tracking-wide">🏆 Renta de estructuras para danza aerea.</span>
                         </div>
-
-                        <!-- Cápsula 3 -->
                         <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
                             <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
                                 <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover">
                             </div>
                             <span class="text-xs tracking-wide">App de danza aera.</span>
                         </div>
-
-                        <!-- Cápsula 4 -->
                         <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
                             <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
                                 <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
                             </div>
                             <span class="text-xs tracking-wide">Equipo de danza aerea y escalada.</span>
                         </div>
-
-                        <!-- Cápsula 5 -->
-                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
-                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
-                                <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs tracking-wide">Competencias de danza aerea.</span>
-                        </div>
-
-                        <!-- Duplicados para efecto fluido infinito -->
-                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
-                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
-                                <img src="logo.jpeg" alt="Anuncio 1" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs tracking-wide">¡Bienvenidos!</span>
-                        </div>
-
-                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
-                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
-                                <img src="sinergia.jpeg" alt="Anuncio 2" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs tracking-wide">🏆 Renta de estructuras para danza aerea.</span>
-                        </div>
-
-                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
-                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
-                                <img src="app.jpeg" alt="Anuncio 3" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs tracking-wide">App de danza aerea.</span>
-                        </div>
-
-                        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
-                            <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
-                                <img src="feros.jpeg" alt="Anuncio 4" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs tracking-wide">Equipo de danza aerea y escalada.</span>
-                        </div>
-
                         <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-full pr-4 p-1">
                             <div class="w-7 h-7 shrink-0 overflow-hidden rounded-full bg-black/20 flex items-center justify-center border border-white/10">
                                 <img src="levitate.jpeg" alt="Anuncio 5" class="w-full h-full object-cover">
@@ -140,7 +89,6 @@
                 </div>
             </div>
             
-            <!-- Quick brand info right (Cápsula independiente) -->
             <div class="hidden lg:flex items-center space-x-3 text-right bg-white/5 backdrop-blur-md border border-white/10 rounded-full pl-4 pr-1 py-1 shadow-lg pointer-events-auto">
                 <span class="text-xs text-slate-300 font-medium">stands 2026</span>
                 <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20 shadow-sm flex items-center justify-center bg-black/20">
@@ -150,17 +98,13 @@
         </div>
     </header>
 
-    <!-- Añadir margen superior para compensar el header fixed flotante -->
     <main class="flex-grow pt-28">
-        
         <section class="max-w-7xl mx-auto px-4 py-8 text-center">
-            <!-- Event Logo Space minimalista -->
             <div class="mb-8 flex justify-center">
                 <div class="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 shadow-2xl flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-sm transform hover:scale-105 transition-all duration-500 overflow-hidden">
                     <img src="logo.jpeg" alt="Logo Oficial Amigos del Aire" class="w-full h-full object-cover rounded-full mix-blend-screen">
                 </div>
             </div>
-            
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500 mb-4">
                 Expositores de Amigos del Aire 6
             </h1>
@@ -169,10 +113,9 @@
             </p>
         </section>
 
-        <!-- Grid de Expositores (Tarjetas Minimalistas) -->
+        <!-- Grid de Expositores -->
         <section class="max-w-7xl mx-auto px-4 pb-16">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
                 <!-- Card 1 -->
                 <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
@@ -326,6 +269,7 @@
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div> 
+
                 <!-- Card 8 -->
                 <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group shadow-xl">
                     <div>
@@ -336,10 +280,10 @@
                             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">Stand #08</span>
                         </div>
                         <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Star Glow</h3>
-                        <p class="text-xs text-slate-300 mt-1 mb-3">>Aparta la fecha de tu evento , dentro del encuentro y te incluimos  20 tattoos personalisados </p>
+                        <p class="text-xs text-slate-300 mt-1 mb-3">Aparta la fecha de tu evento , dentro del encuentro y te incluimos  20 tattoos personalisados </p>
                         <div class="bg-black/20 border border-white/5 rounded-xl p-3 mb-4">
                             <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Promoción del evento</span>
-                            <p class="text-xs text-slate-200 font-medium" "un boleto por  cada $50  de compra en el stand" </p>
+                            <p class="text-xs text-slate-200 font-medium">un boleto por  cada $50  de compra en el stand</p>
                         </div>
                     </div>
                     <a href="https://www.facebook.com/share/19ZTX6G4qZ/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-amber-600/80 hover:bg-amber-600 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm shadow-md">
@@ -372,11 +316,9 @@
             </div>
         </section>
 
-        <!-- Sección del Chat de Comentarios Avanzado -->
+        <!-- Sección del Chat de Comentarios -->
         <section class="max-w-4xl mx-auto px-4 pb-20">
             <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-                
-                <!-- Cabecera del Chat -->
                 <div class="px-8 py-5 border-b border-white/10 bg-black/20">
                     <h2 class="text-xl font-bold flex items-center gap-2 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -384,7 +326,6 @@
                     </h2>
                 </div>
 
-                <!-- Recuadro Informativo de Reglas en Pantalla -->
                 <div class="mx-8 mt-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-200/90 flex items-start gap-3">
                     <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                     <div>
@@ -393,10 +334,7 @@
                     </div>
                 </div>
 
-                <!-- Formulario Principal -->
                 <div class="p-8 border-b border-white/10 bg-black/10">
-                    
-                    <!-- Alerta de Violación de Reglas (Oculta por defecto) -->
                     <div id="bad-words-alert" class="hidden mb-4 p-3.5 bg-red-500/20 border border-red-500/50 rounded-xl text-red-200 text-xs font-semibold flex items-center gap-2 animate-bounce">
                         <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <span>Se detectaron malas palabras, favor de cambiar su comentario</span>
@@ -404,28 +342,13 @@
 
                     <form id="comment-form" class="space-y-4">
                         <div>
-                            <input 
-                                type="text" 
-                                id="author-name" 
-                                required 
-                                placeholder="Tu nombre o apodo"
-                                class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-2.5 transition-all outline-none text-sm"
-                            >
+                            <input type="text" id="author-name" required placeholder="Tu nombre o apodo" class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-2.5 transition-all outline-none text-sm">
                         </div>
                         <div>
-                            <textarea 
-                                id="author-comment" 
-                                required 
-                                rows="3" 
-                                placeholder="¿Qué te parece el evento? Deja tu comentario..."
-                                class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-3 resize-y transition-all outline-none text-sm"
-                            ></textarea>
+                            <textarea id="author-comment" required rows="3" placeholder="¿Qué te parece el evento? Deja tu comentario..." class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-3 resize-y transition-all outline-none text-sm"></textarea>
                         </div>
                         <div class="flex justify-end">
-                            <button 
-                                type="submit" 
-                                class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-xl transition-all active:scale-95 flex items-center gap-2 text-sm"
-                            >
+                            <button type="submit" class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-xl transition-all active:scale-95 flex items-center gap-2 text-sm">
                                 <span>Publicar Comentario</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             </button>
@@ -433,12 +356,8 @@
                     </form>
                 </div>
 
-                <!-- Lista de Comentarios -->
-                <div id="comments-list" class="divide-y divide-white/5 bg-black/10 max-h-[600px] overflow-y-auto">
-                    <!-- Los comentarios y sus respuestas se insertan por JS -->
-                </div>
+                <div id="comments-list" class="divide-y divide-white/5 bg-black/10 max-h-[600px] overflow-y-auto"></div>
                 
-                <!-- Estado Vacío -->
                 <div id="empty-state" class="p-10 text-center hidden bg-black/10">
                     <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/5 mb-3 text-slate-400 border border-white/10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -448,47 +367,36 @@
             </div>
         </section>
 
-        <!-- Bloque de anuncios comercial hasta abajo del contenido principal -->
+        <!-- Anuncio y Contador -->
         <section class="max-w-7xl mx-auto px-4 pb-8 text-center">
             <div class="bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl p-4">
                 <p class="text-xs text-amber-400 mb-2 uppercase tracking-widest font-semibold">Anuncio</p>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200"
-                     crossorigin="anonymous"></script>
-                <!-- Anuncio Responsive Web -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5975800190636200"
-                     data-ad-slot="TU_CODIGO_DE_SLOT"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5975800190636200" data-ad-slot="TU_CODIGO_DE_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </section>
 
-        <!-- Contador de visitas oficial -->
         <section class="max-w-7xl mx-auto px-4 pb-12 flex flex-col items-center justify-center text-center">
             <div class="bg-black/20 backdrop-blur-md border border-white/10 px-6 py-3 rounded-2xl flex items-center justify-center">
                 <div id="sfcgn1pqcfbg6g5b8u8r6zqetugk7cdt2h6"></div>
                 <script type="text/javascript" src="https://counter6.optistats.ovh/private/counter.js?c=gn1pqcfbg6g5b8u8r6zqetugk7cdt2h6&down=async" async></script>
-                <noscript>
-                    <img src="https://counter6.optistats.ovh/private/contadorvisitasgratis.php?c=gn1pqcfbg6g5b8u8r6zqetugk7cdt2h6" border="0" alt="contador de visitas">
-                </noscript>
+                <noscript><img src="https://counter6.optistats.ovh/private/contadorvisitasgratis.php?c=gn1pqcfbg6g5b8u8r6zqetugk7cdt2h6" border="0" alt="contador de visitas"></noscript>
             </div>
         </section>
-
     </main>
 
-    <!-- Footer -->
     <footer class="bg-black/40 backdrop-blur-md border-t border-white/10 py-6 text-center text-xs text-slate-400 mt-auto">
         <p>© 2026 Amigos del Aire 6. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script del Chat con Reacciones, Hilos de Respuestas y Filtro -->
+    <!-- Script de Supabase para el Chat de Comentarios -->
     <script>
-        const STORAGE_KEY = 'chat_amigos_aire_v2';
-        const VOTES_KEY = 'user_votes_amigos_aire';
+        // TODO: Coloca las credenciales de tu proyecto Supabase
+        const SUPABASE_URL = 'https://TU_PROYECTO.supabase.co';
+        const SUPABASE_ANON_KEY = 'TU_ANON_KEY';
+        
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         const form = document.getElementById('comment-form');
         const nameInput = document.getElementById('author-name');
@@ -498,7 +406,6 @@
         const commentCount = document.getElementById('comment-count');
         const badWordsAlert = document.getElementById('bad-words-alert');
 
-        // Expresión regular que detecta malas palabras y variantes
         const BAD_WORDS_REGEX = /(w[e3]y|gu[e3]y|p[i1]nch[e3]s?|v[e3]rga[s]?|p[e3]nd[e3]j[oas\d]*|ch[i1]ng[a-z]*|chtm)/i;
 
         function containsBadWords(text) {
@@ -506,13 +413,14 @@
         }
 
         function escapeHTML(str) {
+            if (!str) return '';
             const div = document.createElement('div');
             div.textContent = str;
             return div.innerHTML;
         }
 
         function getInitials(name) {
-            return name.split(' ').filter(n => n.length > 0).map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'AA';
+            return (name || '').split(' ').filter(n => n.length > 0).map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'AA';
         }
 
         function stringToColor(str) {
@@ -523,147 +431,29 @@
         }
 
         function formatDate(dateString) {
+            if (!dateString) return 'Reciente';
             const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
             return new Date(dateString).toLocaleDateString('es-ES', options);
         }
 
-        function getStoredComments() {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-        }
+        // Cargar comentarios desde Supabase
+        async function fetchComments() {
+            const { data, error } = await supabaseClient
+                .from('comments')
+                .select('*')
+                .order('date', { ascending: false });
 
-        function saveComments(comments) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
-        }
-
-        function getUserVotes() {
-            return JSON.parse(localStorage.getItem(VOTES_KEY)) || {};
-        }
-
-        function saveUserVotes(votes) {
-            localStorage.setItem(VOTES_KEY, JSON.stringify(votes));
-        }
-
-        // Votar por un comentario o respuesta (máximo 1 voto por elemento)
-        function vote(targetId, parentId, type) {
-            const comments = getStoredComments();
-            const votes = getUserVotes();
-
-            let target = null;
-            if (parentId) {
-                const parent = comments.find(c => c.id === parentId);
-                if (parent && parent.replies) {
-                    target = parent.replies.find(r => r.id === targetId);
-                }
-            } else {
-                target = comments.find(c => c.id === targetId);
+            if (error) {
+                console.error('Error al obtener comentarios de Supabase:', error);
+                return [];
             }
-
-            if (!target) return;
-
-            target.likes = target.likes || 0;
-            target.dislikes = target.dislikes || 0;
-
-            const currentVote = votes[targetId];
-
-            if (currentVote === type) {
-                // Quitar el voto si presiona el mismo
-                if (type === 'like') target.likes = Math.max(0, target.likes - 1);
-                if (type === 'dislike') target.dislikes = Math.max(0, target.dislikes - 1);
-                delete votes[targetId];
-            } else {
-                // Cambiar voto
-                if (currentVote === 'like') target.likes = Math.max(0, target.likes - 1);
-                if (currentVote === 'dislike') target.dislikes = Math.max(0, target.dislikes - 1);
-
-                if (type === 'like') target.likes += 1;
-                if (type === 'dislike') target.dislikes += 1;
-
-                votes[targetId] = type;
-            }
-
-            saveComments(comments);
-            saveUserVotes(votes);
-            renderComments();
+            return data || [];
         }
 
-        // Alternar el formulario desplegable de responder
-        function toggleReplyForm(commentId) {
-            const replyForm = document.getElementById(`reply-form-${commentId}`);
-            if (replyForm) {
-                replyForm.classList.toggle('hidden');
-            }
-        }
+        // Renderizar la lista completa de comentarios y respuestas
+        async function renderComments() {
+            const savedComments = await fetchComments();
 
-        // Enviar respuesta a un comentario
-        function submitReply(parentId) {
-            const nameInput = document.getElementById(`reply-name-${parentId}`);
-            const textInput = document.getElementById(`reply-text-${parentId}`);
-            const alertBox = document.getElementById(`reply-alert-${parentId}`);
-
-            const name = nameInput.value.trim();
-            const text = textInput.value.trim();
-
-            if (!name || !text) return;
-
-            if (containsBadWords(name) || containsBadWords(text)) {
-                alertBox.classList.remove('hidden');
-                return;
-            }
-
-            alertBox.classList.add('hidden');
-
-            const comments = getStoredComments();
-            const parentComment = comments.find(c => c.id === parentId);
-
-            if (parentComment) {
-                if (!parentComment.replies) parentComment.replies = [];
-                parentComment.replies.push({
-                    id: Date.now(),
-                    name: name,
-                    text: text,
-                    date: new Date().toISOString(),
-                    likes: 0,
-                    dislikes: 0
-                });
-
-                saveComments(comments);
-                renderComments();
-            }
-        }
-
-        function renderReactions(target, parentId = null) {
-            const votes = getUserVotes();
-            const userVote = votes[target.id];
-
-            const likeActive = userVote === 'like' ? 'bg-emerald-500/30 text-emerald-300 border-emerald-500/50 font-bold' : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10';
-            const dislikeActive = userVote === 'dislike' ? 'bg-red-500/30 text-red-300 border-red-500/50 font-bold' : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10';
-
-            const parentArg = parentId ? parentId : 'null';
-
-            return `
-                <div class="flex items-center gap-2 mt-3">
-                    <button onclick="vote(${target.id}, ${parentArg}, 'like')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs transition-all active:scale-95 ${likeActive}">
-                        <span>👍</span>
-                        <span>${target.likes || 0}</span>
-                    </button>
-                    <button onclick="vote(${target.id}, ${parentArg}, 'dislike')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs transition-all active:scale-95 ${dislikeActive}">
-                        <span>👎</span>
-                        <span>${target.dislikes || 0}</span>
-                    </button>
-                    ${!parentId ? `
-                        <button onclick="toggleReplyForm(${target.id})" class="flex items-center gap-1 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-amber-300 hover:bg-white/10 text-xs font-medium transition-all active:scale-95 ml-1">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
-                            <span>Responder</span>
-                        </button>
-                    ` : ''}
-                </div>
-            `;
-        }
-
-        function renderComments() {
-            const savedComments = getStoredComments();
-
-            // Calcular total acumulado de comentarios y respuestas
             const totalCount = savedComments.reduce((acc, c) => acc + 1 + (c.replies ? c.replies.length : 0), 0);
             commentCount.textContent = totalCount;
 
@@ -690,8 +480,20 @@
                             </div>
                             <div class="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">${escapeHTML(comment.text)}</div>
                             
-                            <!-- Botones de Reacción del Comentario Principal -->
-                            ${renderReactions(comment)}
+                            <div class="flex items-center gap-2 mt-3">
+                                <button onclick="vote('${comment.id}', ${comment.likes || 0}, 'like')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-xs hover:bg-white/10 transition-all active:scale-95">
+                                    <span>👍</span>
+                                    <span>${comment.likes || 0}</span>
+                                </button>
+                                <button onclick="vote('${comment.id}', ${comment.dislikes || 0}, 'dislike')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-xs hover:bg-white/10 transition-all active:scale-95">
+                                    <span>👎</span>
+                                    <span>${comment.dislikes || 0}</span>
+                                </button>
+                                <button onclick="toggleReplyForm('${comment.id}')" class="flex items-center gap-1 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-amber-300 hover:bg-white/10 text-xs font-medium transition-all active:scale-95 ml-1">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
+                                    <span>Responder</span>
+                                </button>
+                            </div>
 
                             <!-- Formulario Desplegable de Respuesta -->
                             <div id="reply-form-${comment.id}" class="hidden mt-4 p-4 bg-black/30 border border-amber-500/20 rounded-xl space-y-3">
@@ -699,29 +501,11 @@
                                     <svg class="w-3.5 h-3.5 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                     <span>Se detectaron malas palabras, favor de cambiar su respuesta</span>
                                 </div>
-                                <input 
-                                    type="text" 
-                                    id="reply-name-${comment.id}" 
-                                    placeholder="Tu nombre o apodo" 
-                                    class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-amber-400 rounded-lg px-3 py-1.5 text-xs outline-none"
-                                >
-                                <textarea 
-                                    id="reply-text-${comment.id}" 
-                                    rows="2" 
-                                    placeholder="Escribe tu respuesta..." 
-                                    class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-amber-400 rounded-lg px-3 py-2 text-xs outline-none resize-y"
-                                ></textarea>
+                                <input type="text" id="reply-name-${comment.id}" placeholder="Tu nombre o apodo" class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-amber-400 rounded-lg px-3 py-1.5 text-xs outline-none">
+                                <textarea id="reply-text-${comment.id}" rows="2" placeholder="Escribe tu respuesta..." class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-amber-400 rounded-lg px-3 py-2 text-xs outline-none resize-y"></textarea>
                                 <div class="flex justify-end gap-2">
-                                    <button 
-                                        type="button" 
-                                        onclick="toggleReplyForm(${comment.id})" 
-                                        class="px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-xs hover:bg-white/10"
-                                    >Cancelar</button>
-                                    <button 
-                                        type="button" 
-                                        onclick="submitReply(${comment.id})" 
-                                        class="px-4 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-medium text-xs shadow-md transition-all active:scale-95"
-                                    >Enviar Respuesta</button>
+                                    <button type="button" onclick="toggleReplyForm('${comment.id}')" class="px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-xs hover:bg-white/10">Cancelar</button>
+                                    <button type="button" onclick="submitReply('${comment.id}')" class="px-4 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-medium text-xs shadow-md transition-all active:scale-95">Enviar Respuesta</button>
                                 </div>
                             </div>
 
@@ -741,7 +525,6 @@
                                                     <span class="text-[9px] text-slate-400 whitespace-nowrap">${formatDate(reply.date)}</span>
                                                 </div>
                                                 <div class="text-slate-300 text-xs whitespace-pre-wrap leading-relaxed">${escapeHTML(reply.text)}</div>
-                                                ${renderReactions(reply, comment.id)}
                                             </div>
                                         </div>
                                     `).join('')}
@@ -754,17 +537,13 @@
             `).join('');
         }
 
-        // Ocultar avisos al escribir
-        nameInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
-        commentInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
-
-        form.addEventListener('submit', (e) => {
+        // Publicar comentario principal
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = nameInput.value.trim();
             const text = commentInput.value.trim();
             if (!name || !text) return;
 
-            // Validación de malas palabras
             if (containsBadWords(name) || containsBadWords(text)) {
                 badWordsAlert.classList.remove('hidden');
                 badWordsAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -773,24 +552,106 @@
 
             badWordsAlert.classList.add('hidden');
 
-            const newComment = { 
-                id: Date.now(), 
-                name: name, 
-                text: text, 
-                date: new Date().toISOString(),
-                likes: 0,
-                dislikes: 0,
-                replies: []
-            };
+            const { error } = await supabaseClient
+                .from('comments')
+                .insert([{
+                    name: name,
+                    text: text,
+                    date: new Date().toISOString(),
+                    likes: 0,
+                    dislikes: 0,
+                    replies: []
+                }]);
 
-            const existingComments = getStoredComments();
-            existingComments.unshift(newComment);
-            saveComments(existingComments);
+            if (error) {
+                console.error("Error al guardar en Supabase:", error);
+                return;
+            }
 
             form.reset();
             renderComments();
         });
 
+        // Alternar el formulario de respuesta
+        function toggleReplyForm(commentId) {
+            const replyForm = document.getElementById(`reply-form-${commentId}`);
+            if (replyForm) replyForm.classList.toggle('hidden');
+        }
+
+        // Publicar respuesta a un comentario
+        async function submitReply(commentId) {
+            const nameInput = document.getElementById(`reply-name-${commentId}`);
+            const textInput = document.getElementById(`reply-text-${commentId}`);
+            const alertBox = document.getElementById(`reply-alert-${commentId}`);
+
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+
+            if (!name || !text) return;
+
+            if (containsBadWords(name) || containsBadWords(text)) {
+                alertBox.classList.remove('hidden');
+                return;
+            }
+
+            alertBox.classList.add('hidden');
+
+            // 1. Obtener comentario actual para actualizar sus respuestas
+            const { data: comment, error: fetchErr } = await supabaseClient
+                .from('comments')
+                .select('replies')
+                .eq('id', commentId)
+                .single();
+
+            if (fetchErr) {
+                console.error("Error al buscar comentario:", fetchErr);
+                return;
+            }
+
+            const currentReplies = comment.replies || [];
+            currentReplies.push({
+                id: Date.now(),
+                name: name,
+                text: text,
+                date: new Date().toISOString()
+            });
+
+            // 2. Actualizar el array de respuestas en Supabase
+            const { error: updateErr } = await supabaseClient
+                .from('comments')
+                .update({ replies: currentReplies })
+                .eq('id', commentId);
+
+            if (updateErr) {
+                console.error("Error al enviar la respuesta:", updateErr);
+                return;
+            }
+
+            renderComments();
+        }
+
+        // Votar por un comentario
+        async function vote(commentId, currentValue, type) {
+            const updateField = type === 'like' ? { likes: currentValue + 1 } : { dislikes: currentValue + 1 };
+
+            const { error } = await supabaseClient
+                .from('comments')
+                .update(updateField)
+                .eq('id', commentId);
+
+            if (error) {
+                console.error("Error al actualizar voto:", error);
+                return;
+            }
+
+            renderComments();
+        }
+
+        // Escuchadores de entrada para ocultar avisos
+        nameInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
+        commentInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
+
+        // Carga inicial al abrir la página
         renderComments();
     </script>
 </body>
