@@ -323,23 +323,38 @@
             </div>
         </section>
 
-        <!-- Sección del Chat de Comentarios con Utterances -->
+        <!-- Sección del Chat de Comentarios (Google Sheets Backend) -->
         <section class="max-w-4xl mx-auto px-4 pb-20">
-            <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 md:p-8 shadow-2xl">
-                <h2 class="text-xl font-bold flex items-center gap-2 text-white mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    Muro de Comentarios
-                </h2>
+            <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+                <div class="px-8 py-5 border-b border-white/10 bg-black/20">
+                    <h2 class="text-xl font-bold flex items-center gap-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        Muro de Comentarios (<span id="comment-count">0</span>)
+                    </h2>
+                </div>
 
-                <!-- Widget Utterances -->
-                <script src="https://utteranc.es/client.js"
-                        repo="charly336/BLACKMOON-WEB"
-                        issue-term="pathname"
-                        label="comentarios-web"
-                        theme="github-dark"
-                        crossorigin="anonymous"
-                        async>
-                </script>
+                <div class="p-8 border-b border-white/10 bg-black/10">
+                    <form id="comment-form" class="space-y-4">
+                        <div>
+                            <input type="text" id="author-name" required placeholder="Tu nombre o apodo" class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-2.5 transition-all outline-none text-sm">
+                        </div>
+                        <div>
+                            <textarea id="author-comment" required rows="3" placeholder="¿Qué te parece el evento? Deja tu comentario..." class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-3 resize-y transition-all outline-none text-sm"></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" id="submit-btn" class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-xl transition-all active:scale-95 flex items-center gap-2 text-sm">
+                                <span>Publicar Comentario</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="comments-list" class="divide-y divide-white/5 bg-black/10 max-h-[600px] overflow-y-auto"></div>
+                
+                <div id="empty-state" class="p-10 text-center hidden bg-black/10">
+                    <p class="text-slate-300 text-sm">Sé el primero en dejar un comentario.</p>
+                </div>
             </div>
         </section>
 
@@ -366,5 +381,105 @@
         <p>© 2026 Amigos del Aire 6. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script de Integración con Google Sheets -->
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1NpmlAId9xcPhO-N1COh7pfmeAnl0RASlqCtKP8NB1pX4xFdgqNc5BdCkdWH59ulL/exec';
+
+        const form = document.getElementById('comment-form');
+        const nameInput = document.getElementById('author-name');
+        const commentInput = document.getElementById('author-comment');
+        const commentsList = document.getElementById('comments-list');
+        const emptyState = document.getElementById('empty-state');
+        const commentCount = document.getElementById('comment-count');
+        const submitBtn = document.getElementById('submit-btn');
+
+        function escapeHTML(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function getInitials(name) {
+            return (name || '').split(' ').filter(n => n.length > 0).map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'AA';
+        }
+
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) { hash = str.charCodeAt(i) + ((hash << 5) - hash); }
+            const colors = ['bg-red-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 'bg-purple-500', 'bg-pink-500', 'bg-indigo-500'];
+            return colors[Math.abs(hash) % colors.length];
+        }
+
+        async function fetchComments() {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const comments = await response.json();
+                renderComments(comments);
+            } catch (error) {
+                console.error("Error al cargar comentarios:", error);
+            }
+        }
+
+        function renderComments(comments) {
+            commentCount.textContent = comments.length;
+
+            if (comments.length === 0) {
+                commentsList.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            commentsList.innerHTML = comments.map(c => `
+                <div class="p-6 hover:bg-white/[0.02] transition-colors">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full ${stringToColor(c.nombre)} text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                                ${escapeHTML(getInitials(c.nombre))}
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-baseline justify-between mb-1 gap-2">
+                                <h4 class="text-sm font-bold text-amber-200 truncate">${escapeHTML(c.nombre)}</h4>
+                                <span class="text-[10px] text-slate-400 whitespace-nowrap">${escapeHTML(c.fecha)}</span>
+                            </div>
+                            <div class="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">${escapeHTML(c.comentario)}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nombre = nameInput.value.trim();
+            const comentario = commentInput.value.trim();
+            if (!nombre || !comentario) return;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Enviando...</span>';
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre, comentario })
+                });
+
+                form.reset();
+                setTimeout(fetchComments, 1000);
+            } catch (error) {
+                console.error("Error al enviar comentario:", error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Publicar Comentario</span>';
+            }
+        });
+
+        // Cargar comentarios al iniciar
+        fetchComments();
+    </script>
 </body>
 </html>
