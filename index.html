@@ -15,9 +15,6 @@
             src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
 
-    <!-- Supabase JS Client CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -326,54 +323,23 @@
             </div>
         </section>
 
-        <!-- Sección del Chat de Comentarios -->
+        <!-- Sección del Chat de Comentarios con Utterances -->
         <section class="max-w-4xl mx-auto px-4 pb-20">
-            <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-                <div class="px-8 py-5 border-b border-white/10 bg-black/20">
-                    <h2 class="text-xl font-bold flex items-center gap-2 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                        Muro de Comentarios (<span id="comment-count">0</span>)
-                    </h2>
-                </div>
+            <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 md:p-8 shadow-2xl">
+                <h2 class="text-xl font-bold flex items-center gap-2 text-white mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Muro de Comentarios
+                </h2>
 
-                <div class="mx-8 mt-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-200/90 flex items-start gap-3">
-                    <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    <div>
-                        <span class="font-bold text-amber-300 block mb-0.5">Reglas de la comunidad:</span>
-                        Mantengamos un espacio respetuoso para la comunidad de Amigos del Aire. No se admiten comentarios con lenguaje ofensivo o palabras altisonantes. Puedes reaccionar y responder a los comentarios.
-                    </div>
-                </div>
-
-                <div class="p-8 border-b border-white/10 bg-black/10">
-                    <div id="bad-words-alert" class="hidden mb-4 p-3.5 bg-red-500/20 border border-red-500/50 rounded-xl text-red-200 text-xs font-semibold flex items-center gap-2 animate-bounce">
-                        <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>Se detectaron malas palabras, favor de cambiar su comentario</span>
-                    </div>
-
-                    <form id="comment-form" class="space-y-4">
-                        <div>
-                            <input type="text" id="author-name" required placeholder="Tu nombre o apodo" class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-2.5 transition-all outline-none text-sm">
-                        </div>
-                        <div>
-                            <textarea id="author-comment" required rows="3" placeholder="¿Qué te parece el evento? Deja tu comentario..." class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:bg-white/10 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-3 resize-y transition-all outline-none text-sm"></textarea>
-                        </div>
-                        <div class="flex justify-end">
-                            <button type="submit" class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-xl transition-all active:scale-95 flex items-center gap-2 text-sm">
-                                <span>Publicar Comentario</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <div id="comments-list" class="divide-y divide-white/5 bg-black/10 max-h-[600px] overflow-y-auto"></div>
-                
-                <div id="empty-state" class="p-10 text-center hidden bg-black/10">
-                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/5 mb-3 text-slate-400 border border-white/10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    </div>
-                    <p class="text-slate-300 text-sm">Sé el primero en dejar un comentario.</p>
-                </div>
+                <!-- Widget Utterances -->
+                <script src="https://utteranc.es/client.js"
+                        repo="charly336/BLACKMOON-WEB"
+                        issue-term="pathname"
+                        label="comentarios-web"
+                        theme="github-dark"
+                        crossorigin="anonymous"
+                        async>
+                </script>
             </div>
         </section>
 
@@ -400,256 +366,5 @@
         <p>© 2026 Amigos del Aire 6. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script de Supabase para el Chat de Comentarios -->
-    <script>
-        const SUPABASE_URL = 'https://TU_PROYECTO.supabase.co';
-        const SUPABASE_ANON_KEY = 'TU_ANON_KEY';
-        
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        const form = document.getElementById('comment-form');
-        const nameInput = document.getElementById('author-name');
-        const commentInput = document.getElementById('author-comment');
-        const commentsList = document.getElementById('comments-list');
-        const emptyState = document.getElementById('empty-state');
-        const commentCount = document.getElementById('comment-count');
-        const badWordsAlert = document.getElementById('bad-words-alert');
-
-        const BAD_WORDS_REGEX = /(w[e3]y|gu[e3]y|p[i1]nch[e3]s?|v[e3]rga[s]?|p[e3]nd[e3]j[oas\d]*|ch[i1]ng[a-z]*|chtm)/i;
-
-        function containsBadWords(text) {
-            return BAD_WORDS_REGEX.test(text);
-        }
-
-        function escapeHTML(str) {
-            if (!str) return '';
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
-
-        function getInitials(name) {
-            return (name || '').split(' ').filter(n => n.length > 0).map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'AA';
-        }
-
-        function stringToColor(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) { hash = str.charCodeAt(i) + ((hash << 5) - hash); }
-            const colors = ['bg-red-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 'bg-purple-500', 'bg-pink-500', 'bg-indigo-500', 'bg-teal-500'];
-            return colors[Math.abs(hash) % colors.length];
-        }
-
-        function formatDate(dateString) {
-            if (!dateString) return 'Reciente';
-            const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-            return new Date(dateString).toLocaleDateString('es-ES', options);
-        }
-
-        async function fetchComments() {
-            const { data, error } = await supabaseClient
-                .from('comments')
-                .select('*')
-                .order('date', { ascending: false });
-
-            if (error) {
-                console.error('Error al obtener comentarios de Supabase:', error);
-                return [];
-            }
-            return data || [];
-        }
-
-        async function renderComments() {
-            const savedComments = await fetchComments();
-
-            const totalCount = savedComments.reduce((acc, c) => acc + 1 + (c.replies ? c.replies.length : 0), 0);
-            commentCount.textContent = totalCount;
-
-            if (savedComments.length === 0) {
-                commentsList.innerHTML = '';
-                emptyState.classList.remove('hidden');
-                return;
-            }
-
-            emptyState.classList.add('hidden');
-            
-            commentsList.innerHTML = savedComments.map(comment => `
-                <div class="p-6 hover:bg-white/[0.02] transition-colors">
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div class="w-10 h-10 rounded-full ${stringToColor(comment.name)} text-white flex items-center justify-center font-bold text-sm shadow-sm">
-                                ${escapeHTML(getInitials(comment.name))}
-                            </div>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-baseline justify-between mb-1 gap-2">
-                                <h4 class="text-sm font-bold text-amber-200 truncate">${escapeHTML(comment.name)}</h4>
-                                <span class="text-[10px] text-slate-400 whitespace-nowrap">${formatDate(comment.date)}</span>
-                            </div>
-                            <div class="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">${escapeHTML(comment.text)}</div>
-                            
-                            <div class="flex items-center gap-2 mt-3">
-                                <button onclick="vote('${comment.id}', ${comment.likes || 0}, 'like')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-xs hover:bg-white/10 transition-all active:scale-95">
-                                    <span>👍</span>
-                                    <span>${comment.likes || 0}</span>
-                                </button>
-                                <button onclick="vote('${comment.id}', ${comment.dislikes || 0}, 'dislike')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-xs hover:bg-white/10 transition-all active:scale-95">
-                                    <span>👎</span>
-                                    <span>${comment.dislikes || 0}</span>
-                                </button>
-                                <button onclick="toggleReplyForm('${comment.id}')" class="flex items-center gap-1 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-amber-300 hover:bg-white/10 text-xs font-medium transition-all active:scale-95 ml-1">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
-                                    <span>Responder</span>
-                                </button>
-                            </div>
-
-                            <div id="reply-form-${comment.id}" class="hidden mt-4 p-4 bg-black/30 border border-amber-500/20 rounded-xl space-y-3">
-                                <div id="reply-alert-${comment.id}" class="hidden p-2.5 bg-red-500/20 border border-red-500/40 rounded-lg text-red-200 text-xs font-semibold flex items-center gap-1.5">
-                                    <svg class="w-3.5 h-3.5 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    <span>Se detectaron malas palabras, favor de cambiar su respuesta</span>
-                                </div>
-                                <input type="text" id="reply-name-${comment.id}" placeholder="Tu nombre o apodo" class="w-full sm:w-1/2 bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-amber-400 rounded-lg px-3 py-1.5 text-xs outline-none">
-                                <textarea id="reply-text-${comment.id}" rows="2" placeholder="Escribe tu respuesta..." class="w-full bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-amber-400 rounded-lg px-3 py-2 text-xs outline-none resize-y"></textarea>
-                                <div class="flex justify-end gap-2">
-                                    <button type="button" onclick="toggleReplyForm('${comment.id}')" class="px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-slate-300 text-xs hover:bg-white/10">Cancelar</button>
-                                    <button type="button" onclick="submitReply('${comment.id}')" class="px-4 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-medium text-xs shadow-md transition-all active:scale-95">Enviar Respuesta</button>
-                                </div>
-                            </div>
-
-                            ${comment.replies && comment.replies.length > 0 ? `
-                                <div class="mt-4 space-y-4 pl-4 border-l-2 border-amber-500/30">
-                                    ${comment.replies.map(reply => `
-                                        <div class="flex gap-3 pt-2">
-                                            <div class="flex-shrink-0">
-                                                <div class="w-8 h-8 rounded-full ${stringToColor(reply.name)} text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                                                    ${escapeHTML(getInitials(reply.name))}
-                                                </div>
-                                            </div>
-                                            <div class="flex-1 min-w-0">
-                                                <div class="flex items-baseline justify-between mb-1 gap-2">
-                                                    <h5 class="text-xs font-bold text-amber-300/90 truncate">${escapeHTML(reply.name)}</h5>
-                                                    <span class="text-[9px] text-slate-400 whitespace-nowrap">${formatDate(reply.date)}</span>
-                                                </div>
-                                                <div class="text-slate-300 text-xs whitespace-pre-wrap leading-relaxed">${escapeHTML(reply.text)}</div>
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = nameInput.value.trim();
-            const text = commentInput.value.trim();
-            if (!name || !text) return;
-
-            if (containsBadWords(name) || containsBadWords(text)) {
-                badWordsAlert.classList.remove('hidden');
-                badWordsAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return;
-            }
-
-            badWordsAlert.classList.add('hidden');
-
-            const { error } = await supabaseClient
-                .from('comments')
-                .insert([{
-                    name: name,
-                    text: text,
-                    date: new Date().toISOString(),
-                    likes: 0,
-                    dislikes: 0,
-                    replies: []
-                }]);
-
-            if (error) {
-                console.error("Error al guardar en Supabase:", error);
-                return;
-            }
-
-            form.reset();
-            renderComments();
-        });
-
-        function toggleReplyForm(commentId) {
-            const replyForm = document.getElementById(`reply-form-${commentId}`);
-            if (replyForm) replyForm.classList.toggle('hidden');
-        }
-
-        async function submitReply(commentId) {
-            const nameInput = document.getElementById(`reply-name-${commentId}`);
-            const textInput = document.getElementById(`reply-text-${commentId}`);
-            const alertBox = document.getElementById(`reply-alert-${commentId}`);
-
-            const name = nameInput.value.trim();
-            const text = textInput.value.trim();
-
-            if (!name || !text) return;
-
-            if (containsBadWords(name) || containsBadWords(text)) {
-                alertBox.classList.remove('hidden');
-                return;
-            }
-
-            alertBox.classList.add('hidden');
-
-            const { data: comment, error: fetchErr } = await supabaseClient
-                .from('comments')
-                .select('replies')
-                .eq('id', commentId)
-                .single();
-
-            if (fetchErr) {
-                console.error("Error al buscar comentario:", fetchErr);
-                return;
-            }
-
-            const currentReplies = comment.replies || [];
-            currentReplies.push({
-                id: Date.now(),
-                name: name,
-                text: text,
-                date: new Date().toISOString()
-            });
-
-            const { error: updateErr } = await supabaseClient
-                .from('comments')
-                .update({ replies: currentReplies })
-                .eq('id', commentId);
-
-            if (updateErr) {
-                console.error("Error al enviar la respuesta:", updateErr);
-                return;
-            }
-
-            renderComments();
-        }
-
-        async function vote(commentId, currentValue, type) {
-            const updateField = type === 'like' ? { likes: currentValue + 1 } : { dislikes: currentValue + 1 };
-
-            const { error } = await supabaseClient
-                .from('comments')
-                .update(updateField)
-                .eq('id', commentId);
-
-            if (error) {
-                console.error("Error al actualizar voto:", error);
-                return;
-            }
-
-            renderComments();
-        }
-
-        nameInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
-        commentInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
-
-        renderComments();
-    </script>
 </body>
 </html>
