@@ -10,6 +10,11 @@
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- AMP Auto Ads Script -->
+    <script async custom-element="amp-auto-ads"
+            src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+
     <!-- Supabase JS Client CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -43,6 +48,11 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5975800190636200" crossorigin="anonymous"></script>
 </head>
 <body class="selection:bg-amber-400 selection:text-slate-900">
+
+    <!-- AMP Auto Ads Tag -->
+    <amp-auto-ads type="adsense"
+            data-ad-client="ca-pub-5975800190636200">
+    </amp-auto-ads>
 
     <!-- Header Flotante Minimalista -->
     <header class="fixed top-0 w-full z-50 pt-4 pointer-events-none">
@@ -392,7 +402,6 @@
 
     <!-- Script de Supabase para el Chat de Comentarios -->
     <script>
-        // TODO: Coloca las credenciales de tu proyecto Supabase
         const SUPABASE_URL = 'https://TU_PROYECTO.supabase.co';
         const SUPABASE_ANON_KEY = 'TU_ANON_KEY';
         
@@ -436,7 +445,6 @@
             return new Date(dateString).toLocaleDateString('es-ES', options);
         }
 
-        // Cargar comentarios desde Supabase
         async function fetchComments() {
             const { data, error } = await supabaseClient
                 .from('comments')
@@ -450,7 +458,6 @@
             return data || [];
         }
 
-        // Renderizar la lista completa de comentarios y respuestas
         async function renderComments() {
             const savedComments = await fetchComments();
 
@@ -495,7 +502,6 @@
                                 </button>
                             </div>
 
-                            <!-- Formulario Desplegable de Respuesta -->
                             <div id="reply-form-${comment.id}" class="hidden mt-4 p-4 bg-black/30 border border-amber-500/20 rounded-xl space-y-3">
                                 <div id="reply-alert-${comment.id}" class="hidden p-2.5 bg-red-500/20 border border-red-500/40 rounded-lg text-red-200 text-xs font-semibold flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -509,7 +515,6 @@
                                 </div>
                             </div>
 
-                            <!-- Respuestas Anidadas -->
                             ${comment.replies && comment.replies.length > 0 ? `
                                 <div class="mt-4 space-y-4 pl-4 border-l-2 border-amber-500/30">
                                     ${comment.replies.map(reply => `
@@ -537,7 +542,6 @@
             `).join('');
         }
 
-        // Publicar comentario principal
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = nameInput.value.trim();
@@ -572,13 +576,11 @@
             renderComments();
         });
 
-        // Alternar el formulario de respuesta
         function toggleReplyForm(commentId) {
             const replyForm = document.getElementById(`reply-form-${commentId}`);
             if (replyForm) replyForm.classList.toggle('hidden');
         }
 
-        // Publicar respuesta a un comentario
         async function submitReply(commentId) {
             const nameInput = document.getElementById(`reply-name-${commentId}`);
             const textInput = document.getElementById(`reply-text-${commentId}`);
@@ -596,7 +598,6 @@
 
             alertBox.classList.add('hidden');
 
-            // 1. Obtener comentario actual para actualizar sus respuestas
             const { data: comment, error: fetchErr } = await supabaseClient
                 .from('comments')
                 .select('replies')
@@ -616,7 +617,6 @@
                 date: new Date().toISOString()
             });
 
-            // 2. Actualizar el array de respuestas en Supabase
             const { error: updateErr } = await supabaseClient
                 .from('comments')
                 .update({ replies: currentReplies })
@@ -630,7 +630,6 @@
             renderComments();
         }
 
-        // Votar por un comentario
         async function vote(commentId, currentValue, type) {
             const updateField = type === 'like' ? { likes: currentValue + 1 } : { dislikes: currentValue + 1 };
 
@@ -647,11 +646,9 @@
             renderComments();
         }
 
-        // Escuchadores de entrada para ocultar avisos
         nameInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
         commentInput.addEventListener('input', () => badWordsAlert.classList.add('hidden'));
 
-        // Carga inicial al abrir la página
         renderComments();
     </script>
 </body>
